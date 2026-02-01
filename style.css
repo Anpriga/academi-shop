@@ -1,6 +1,6 @@
-/* ============================= */
-/* RESET & GLOBAL */
-/* ============================= */
+/* ===============================
+   GLOBAL RESET & WRAPPER
+================================ */
 * {
     margin: 0;
     padding: 0;
@@ -8,21 +8,29 @@
     font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
+body {
+    background-color: #fffdf8;
+    color: #333;
+}
+
+/* Wrapper global */
 .container-custom {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ============================= */
-/* NAVBAR */
-/* ============================= */
+
+/* ===============================
+   NAVBAR
+================================ */
 .navbar {
     background: linear-gradient(90deg, #ffb347, #ffcc80);
     padding: 16px 24px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
+/* Isi navbar */
 .navbar .container-fluid {
     max-width: 1100px;
     margin: 0 auto;
@@ -32,16 +40,19 @@
     gap: 18px;
 }
 
+/* Brand */
 .navbar-brand {
     font-weight: 700;
     font-size: 18px;
     color: #5a2d00;
+    margin-right: 20px;
     white-space: nowrap;
 }
 
-/* ============================= */
-/* DROPDOWN */
-/* ============================= */
+
+/* ===============================
+   DROPDOWN
+================================ */
 .dropdown {
     position: relative;
 }
@@ -55,7 +66,6 @@
     cursor: pointer;
     font-size: 14px;
     transition: all 0.25s ease;
-    white-space: nowrap;
 }
 
 .button:hover {
@@ -63,6 +73,7 @@
     transform: translateY(-1px);
 }
 
+/* Dropdown content */
 .content {
     display: none;
     position: absolute;
@@ -82,19 +93,22 @@
     color: #5a2d00;
     text-decoration: none;
     font-size: 14px;
+    transition: background 0.2s ease;
 }
 
 .content a:hover {
     background-color: #ffe0b2;
 }
 
+/* Show dropdown */
 .dropdown:hover .content {
     display: block;
 }
 
-/* ============================= */
-/* SEARCH */
-/* ============================= */
+
+/* ===============================
+   SEARCH
+================================ */
 .search-wrapper {
     margin: 28px auto;
     max-width: 1100px;
@@ -112,19 +126,21 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Input */
 .form-control {
     width: 260px;
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid #ffcc80;
+    outline: none;
     font-size: 14px;
 }
 
 .form-control:focus {
     border-color: #ff9800;
-    outline: none;
 }
 
+/* Button */
 .btn {
     padding: 8px 18px;
     border-radius: 8px;
@@ -132,32 +148,37 @@
     background-color: #ff9800;
     color: #fff;
     cursor: pointer;
+    font-size: 14px;
+    transition: background 0.25s ease;
 }
 
 .btn:hover {
     background-color: #fb8c00;
 }
 
-/* ============================= */
-/* CARD */
-/* ============================= */
+
+/* ===============================
+   CARD SECTION
+================================ */
 .card-wrapper {
     max-width: 1100px;
     margin: 30px auto 60px;
     padding: 0 20px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     column-gap: 36px;
     row-gap: 30px;
 }
 
+/* Card */
 .card {
     background-color: #fffaf3;
+    border: none;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    width: 260px;
+    display: inline-block;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -166,11 +187,17 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
+/* Image */
 .card-img-top {
-    width: 100%;
     display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: none;
+    padding: 0;
 }
 
+/* Body */
 .card-body {
     padding: 18px;
     text-align: center;
@@ -190,91 +217,42 @@
     margin-bottom: 14px;
 }
 
+/* Card button */
 .card .btn-primary {
-    background-color: #ff9800;
+    background-color: #0003b0;
     border: none;
     border-radius: 10px;
     padding: 8px 16px;
     font-size: 14px;
+    transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .card .btn-primary:hover {
-    background-color: #fb8c00;
+    background-color: #3f00fb;
+    transform: scale(1.05);
 }
 
-/* ============================= */
-/* TABLET */
-/* ============================= */
+
+/* ===============================
+   PAKSA HP = PC
+================================ */
 @media (max-width: 768px) {
 
-    .search-wrapper form {
-        flex-direction: column;
-        width: 100%;
+    body {
+        min-width: 1200px;
+        overflow-x: auto;
     }
 
-    .form-control,
-    .btn {
-        width: 100%;
-    }
-
-    .card {
-        width: 45%;
-    }
-}
-
-/* ============================= */
-/* MOBILE */
-/* ============================= */
-@media (max-width: 480px) {
-
-    /* NAVBAR SATU BARIS */
-    .navbar {
-        padding: 14px;
-    }
-
+    .navbar,
+    .search-wrapper,
+    .card-wrapper,
+    .container-custom,
     .navbar .container-fluid {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        gap: 10px;
+        min-width: 1100px;
     }
 
-    .navbar-brand {
-        font-size: 14px;
-        flex-shrink: 0;
-    }
-
-    .dropdown {
-        flex-shrink: 0;
-    }
-
-    .button {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-
-    /* CARD 2 KOLOM */
     .card-wrapper {
-        padding: 0 12px;
-        justify-content: space-between;
-        column-gap: 12px;
-        row-gap: 16px;
-    }
-
-    .card {
-        width: calc(50% - 6px);
-    }
-
-    .card-title {
-        font-size: 14px;
-    }
-
-    .card-text {
-        font-size: 12px;
-        line-height: 1.4;
-    }
-
-    .card .btn-primary {
-        font-size: 12px;
-        padding: 6px 10px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
     }
 }
