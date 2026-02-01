@@ -1,20 +1,17 @@
 /* ============================= */
-/* WRAPPER GLOBAL */
-/* ============================= */
-.container-custom {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ============================= */
-/* RESET RINGAN */
+/* RESET & GLOBAL */
 /* ============================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.container-custom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* ============================= */
@@ -35,7 +32,6 @@
     gap: 18px;
 }
 
-/* BRAND */
 .navbar-brand {
     font-weight: 700;
     font-size: 18px;
@@ -59,6 +55,7 @@
     cursor: pointer;
     font-size: 14px;
     transition: all 0.25s ease;
+    white-space: nowrap;
 }
 
 .button:hover {
@@ -66,7 +63,6 @@
     transform: translateY(-1px);
 }
 
-/* DROPDOWN CONTENT */
 .content {
     display: none;
     position: absolute;
@@ -121,12 +117,12 @@
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid #ffcc80;
-    outline: none;
     font-size: 14px;
 }
 
 .form-control:focus {
     border-color: #ff9800;
+    outline: none;
 }
 
 .btn {
@@ -136,7 +132,6 @@
     background-color: #ff9800;
     color: #fff;
     cursor: pointer;
-    font-size: 14px;
 }
 
 .btn:hover {
@@ -173,7 +168,6 @@
 
 .card-img-top {
     width: 100%;
-    height: auto;
     display: block;
 }
 
@@ -209,18 +203,78 @@
 }
 
 /* ============================= */
-/* RESPONSIVE */
-/* ============================= */
-
 /* TABLET */
+/* ============================= */
 @media (max-width: 768px) {
-
-    .navbar .container-fluid {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
 
     .search-wrapper form {
         flex-direction: column;
         width: 100%;
     }
+
+    .form-control,
+    .btn {
+        width: 100%;
+    }
+
+    .card {
+        width: 45%;
+    }
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+@media (max-width: 480px) {
+
+    /* NAVBAR SATU BARIS */
+    .navbar {
+        padding: 14px;
+    }
+
+    .navbar .container-fluid {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    .dropdown {
+        flex-shrink: 0;
+    }
+
+    .button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    /* CARD 2 KOLOM */
+    .card-wrapper {
+        padding: 0 12px;
+        justify-content: space-between;
+        column-gap: 12px;
+        row-gap: 16px;
+    }
+
+    .card {
+        width: calc(50% - 6px);
+    }
+
+    .card-title {
+        font-size: 14px;
+    }
+
+    .card-text {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .card .btn-primary {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
