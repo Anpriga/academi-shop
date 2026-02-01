@@ -1,11 +1,15 @@
+/* ============================= */
 /* WRAPPER GLOBAL */
+/* ============================= */
 .container-custom {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* ============================= */
 /* RESET RINGAN */
+/* ============================= */
 * {
     margin: 0;
     padding: 0;
@@ -13,14 +17,15 @@
     font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
+/* ============================= */
 /* NAVBAR */
+/* ============================= */
 .navbar {
     background: linear-gradient(90deg, #ffb347, #ffcc80);
     padding: 16px 24px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* ISI NAVBAR */
 .navbar .container-fluid {
     max-width: 1100px;
     margin: 0 auto;
@@ -30,17 +35,17 @@
     gap: 18px;
 }
 
-
 /* BRAND */
 .navbar-brand {
     font-weight: 700;
     font-size: 18px;
     color: #5a2d00;
-    margin-right: 20px;
     white-space: nowrap;
 }
 
+/* ============================= */
 /* DROPDOWN */
+/* ============================= */
 .dropdown {
     position: relative;
 }
@@ -81,19 +86,19 @@
     color: #5a2d00;
     text-decoration: none;
     font-size: 14px;
-    transition: background 0.2s ease;
 }
 
 .content a:hover {
     background-color: #ffe0b2;
 }
 
-/* SHOW DROPDOWN */
 .dropdown:hover .content {
     display: block;
 }
 
-/* SEARCH WRAPPER */
+/* ============================= */
+/* SEARCH */
+/* ============================= */
 .search-wrapper {
     margin: 28px auto;
     max-width: 1100px;
@@ -102,8 +107,6 @@
     justify-content: center;
 }
 
-
-/* FORM SEARCH */
 .search-wrapper form {
     display: flex;
     gap: 10px;
@@ -113,7 +116,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* INPUT SEARCH */
 .form-control {
     width: 260px;
     padding: 8px 12px;
@@ -127,7 +129,6 @@
     border-color: #ff9800;
 }
 
-/* BUTTON SEARCH */
 .btn {
     padding: 8px 18px;
     border-radius: 8px;
@@ -136,77 +137,15 @@
     color: #fff;
     cursor: pointer;
     font-size: 14px;
-    transition: background 0.25s ease;
 }
 
 .btn:hover {
     background-color: #fb8c00;
 }
 
-/* ===== CARD SECTION ===== */
-.card {
-    background-color: #fffaf3;
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    display: inline-block; /* card menyesuaikan isi */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
-}
-
-/* IMAGE CARD */
-.card-img-top {
-    display: block;
-    margin: 0 auto;
-    width: 100%;        /* gambar isi lebar card */
-    height: auto;       /* proporsi asli */
-    object-fit: contain;
-    background: none;   /* tidak ada warna samping */
-    padding: 0;         /* hilangkan ruang kosong */
-}
-
-/* BODY CARD */
-.card-body {
-    padding: 18px;
-    text-align: center;      /* isi card rata tengah */
-}
-
-/* TITLE CARD */
-.card-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #5a2d00;
-    margin-bottom: 10px;
-}
-
-/* TEXT CARD */
-.card-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #6d4c41;
-    margin-bottom: 14px;
-}
-
-/* BUTTON CARD */
-.card .btn-primary {
-    background-color: #0003b0;
-    border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 14px;
-    transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.card .btn-primary:hover {
-    background-color: #3f00fb;
-    transform: scale(1.05);
-}
-
+/* ============================= */
+/* CARD */
+/* ============================= */
 .card-wrapper {
     max-width: 1100px;
     margin: 30px auto 60px;
@@ -217,3 +156,71 @@
     column-gap: 36px;
     row-gap: 30px;
 }
+
+.card {
+    background-color: #fffaf3;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    width: 260px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-body {
+    padding: 18px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #5a2d00;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6d4c41;
+    margin-bottom: 14px;
+}
+
+.card .btn-primary {
+    background-color: #ff9800;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.card .btn-primary:hover {
+    background-color: #fb8c00;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+/* TABLET */
+@media (max-width: 768px) {
+
+    .navbar .container-fluid {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .search-wrapper form {
+        flex-direction: column;
+        width: 100%;
+    }
