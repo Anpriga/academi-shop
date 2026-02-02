@@ -41,7 +41,58 @@
     <button class="btn" onclick="beliSekarang()">Beli Sekarang</button>
 </div>
 
-<script>
+    <script>
+const hargaAwal = 100000;
+
+const voucher5 = [
+    "HEMAT5A","HEMAT5B","HEMAT5C","HEMAT5D","HEMAT5E",
+    "HEMAT5F","HEMAT5G","HEMAT5H","HEMAT5I","HEMAT5J"
+];
+
+const voucher10 = [
+    "HEMAT10A","HEMAT10B","HEMAT10C","HEMAT10D","HEMAT10E",
+    "HEMAT10F","HEMAT10G","HEMAT10H","HEMAT10I","HEMAT10J"
+];
+
+const voucher15 = [
+    "HEMAT15A","HEMAT15B","HEMAT15C","HEMAT15D","HEMAT15E",
+    "HEMAT15F","HEMAT15G","HEMAT15H","HEMAT15I","HEMAT15J"
+];
+
+let diskon = 0;
+
+function cekVoucher() {
+    const voucherInput = document.getElementById("voucher").value.toUpperCase();
+    const info = document.getElementById("voucher-info");
+    const inputHarga = document.getElementById("harga");
+
+    diskon = 0;
+
+    if (voucherInput === "") {
+        inputHarga.value = "Rp 100.000";
+        info.innerHTML = "";
+        return;
+    }
+
+    if (voucher5.includes(voucherInput)) {
+        diskon = 5;
+        info.innerHTML = "✔️ Voucher valid! Diskon 5%";
+    } else if (voucher10.includes(voucherInput)) {
+        diskon = 10;
+        info.innerHTML = "✔️ Voucher valid! Diskon 10%";
+    } else if (voucher15.includes(voucherInput)) {
+        diskon = 15;
+        info.innerHTML = "✔️ Voucher valid! Diskon 15%";
+    } else {
+        inputHarga.value = "Rp 100.000";
+        info.innerHTML = "❌ Voucher tidak terdaftar";
+        return;
+    }
+
+    const hargaAkhir = hargaAwal - (hargaAwal * diskon / 100);
+    inputHarga.value = "Rp " + hargaAkhir.toLocaleString("id-ID");
+}
+
 function beliSekarang() {
     const nama = document.getElementById("nama").value;
     const nirm = document.getElementById("nirm").value;
@@ -51,34 +102,7 @@ function beliSekarang() {
     const judul = document.getElementById("judul").value || "-";
     const voucherInput = document.getElementById("voucher").value.toUpperCase();
 
-    let hargaAwal = 100000;
-    let diskon = 0;
-
-    const voucher5 = [
-        "HEMAT5A","HEMAT5B","HEMAT5C","HEMAT5D","HEMAT5E",
-        "HEMAT5F","HEMAT5G","HEMAT5H","HEMAT5I","HEMAT5J"
-    ];
-
-    const voucher10 = [
-        "HEMAT10A","HEMAT10B","HEMAT10C","HEMAT10D","HEMAT10E",
-        "HEMAT10F","HEMAT10G","HEMAT10H","HEMAT10I","HEMAT10J"
-    ];
-
-    const voucher15 = [
-        "HEMAT15A","HEMAT15B","HEMAT15C","HEMAT15D","HEMAT15E",
-        "HEMAT15F","HEMAT15G","HEMAT15H","HEMAT15I","HEMAT15J"
-    ];
-
-    if (voucher5.includes(voucherInput)) {
-        diskon = 5;
-    } else if (voucher10.includes(voucherInput)) {
-        diskon = 10;
-    } else if (voucher15.includes(voucherInput)) {
-        diskon = 15;
-    }
-
-    const potongan = hargaAwal * diskon / 100;
-    const hargaAkhir = hargaAwal - potongan;
+    const totalBayar = hargaAwal - (hargaAwal * diskon / 100);
 
     const pesan = `
 *JOKI MAKALAH*
@@ -91,7 +115,7 @@ Kampus: ${kampus}
 Judul Makalah: ${judul}
 Voucher: ${voucherInput || "-"}
 Diskon: ${diskon}%
-Total Bayar: Rp ${hargaAkhir.toLocaleString("id-ID")}
+Total Bayar: Rp ${totalBayar.toLocaleString("id-ID")}
 -----------------------
 Saya ingin lanjut pemesanan.
     `;
@@ -103,5 +127,3 @@ Saya ingin lanjut pemesanan.
 }
 </script>
 
-</body>
-</html>
