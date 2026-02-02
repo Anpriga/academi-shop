@@ -40,48 +40,33 @@
 
     <button class="btn" onclick="beliSekarang()">Beli Sekarang</button>
 </div>
-
 <script>
-const hargaAwal = 100000;
-
-const voucher5 = [
-    "HEMAT5A","HEMAT5B","HEMAT5C","HEMAT5D","HEMAT5E",
-    "HEMAT5F","HEMAT5G","HEMAT5H","HEMAT5I","HEMAT5J"
-];
-
-const voucher10 = [
-    "HEMAT10A","HEMAT10B","HEMAT10C","HEMAT10D","HEMAT10E",
-    "HEMAT10F","HEMAT10G","HEMAT10H","HEMAT10I","HEMAT10J"
-];
-
-const voucher15 = [
-    "HEMAT15A","HEMAT15B","HEMAT15C","HEMAT15D","HEMAT15E",
-    "HEMAT15F","HEMAT15G","HEMAT15H","HEMAT15I","HEMAT15J"
-];
-
-let diskon = 0;
-let voucherAktif = "HEMAT15B";
-
-function cekVoucher() {
+function beliSekarang() {
+    const nama = document.getElementById("nama").value;
+    const nirm = document.getElementById("nirm").value;
+    const prodi = document.getElementById("prodi").value;
+    const fakultas = document.getElementById("fakultas").value;
+    const kampus = document.getElementById("kampus").value;
+    const judul = document.getElementById("judul").value || "-";
     const voucherInput = document.getElementById("voucher").value.toUpperCase();
-    const info = document.getElementById("voucher-info");
-    const inputHarga = document.getElementById("harga");
 
-    diskon = 0;
-    voucherAktif = "";
+    let hargaAwal = 100000;
+    let diskon = 0;
 
-    if (voucherInput === "") {
-        inputHarga.value = "Rp 100.000";
-        info.innerHTML = "";
-        return;
-    }
+    const voucher5 = [
+        "HEMAT5A","HEMAT5B","HEMAT5C","HEMAT5D","HEMAT5E",
+        "HEMAT5F","HEMAT5G","HEMAT5H","HEMAT5I","HEMAT5J"
+    ];
 
-    // cek apakah voucher sudah dipakai
-    if (localStorage.getItem("voucher_" + voucherInput)) {
-        info.innerHTML = "❌ Voucher sudah digunakan";
-        inputHarga.value = "Rp 100.000";
-        return;
-    }
+    const voucher10 = [
+        "HEMAT10A","HEMAT10B","HEMAT10C","HEMAT10D","HEMAT10E",
+        "HEMAT10F","HEMAT10G","HEMAT10H","HEMAT10I","HEMAT10J"
+    ];
+
+    const voucher15 = [
+        "HEMAT15A","HEMAT15B","HEMAT15C","HEMAT15D","HEMAT15E",
+        "HEMAT15F","HEMAT15G","HEMAT15H","HEMAT15I","HEMAT15J"
+    ];
 
     if (voucher5.includes(voucherInput)) {
         diskon = 5;
@@ -89,43 +74,10 @@ function cekVoucher() {
         diskon = 10;
     } else if (voucher15.includes(voucherInput)) {
         diskon = 15;
-    } else {
-        info.innerHTML = "❌ Voucher tidak terdaftar";
-        inputHarga.value = "Rp 100.000";
-        return;
     }
 
-    voucherAktif = voucherInput;
-    const hargaAkhir = hargaAwal - (hargaAwal * diskon / 100);
-    inputHarga.value = "Rp " + hargaAkhir.toLocaleString("id-ID");
-    info.innerHTML = "✔️ Voucher valid! Diskon " + diskon + "%";
-}
-
-function semuaFormTerisi() {
-    const wajib = ["nama","nirm","prodi","fakultas","kampus"];
-    return wajib.every(id => document.getElementById(id).value.trim() !== "");
-}
-
-function beliSekarang() {
-
-    if (!semuaFormTerisi()) {
-        alert("⚠️ Mohon lengkapi semua data terlebih dahulu.");
-        return;
-    }
-
-    const nama = document.getElementById("nama").value;
-    const nirm = document.getElementById("nirm").value;
-    const prodi = document.getElementById("prodi").value;
-    const fakultas = document.getElementById("fakultas").value;
-    const kampus = document.getElementById("kampus").value;
-    const judul = document.getElementById("judul").value || "-";
-
-    const totalBayar = hargaAwal - (hargaAwal * diskon / 100);
-
-    // tandai voucher sudah dipakai
-    if (voucherAktif !== "") {
-        localStorage.setItem("voucher_" + voucherAktif, "used");
-    }
+    const potongan = hargaAwal * diskon / 100;
+    const hargaAkhir = hargaAwal - potongan;
 
     const pesan = `
 *JOKI MAKALAH*
@@ -136,15 +88,17 @@ Program Studi: ${prodi}
 Fakultas: ${fakultas}
 Kampus: ${kampus}
 Judul Makalah: ${judul}
-Voucher: ${voucherAktif || "-"}
+Voucher: ${voucherInput || "-"}
 Diskon: ${diskon}%
-Total Bayar: Rp ${totalBayar.toLocaleString("id-ID")}
+Total Bayar: Rp ${hargaAkhir.toLocaleString("id-ID")}
 -----------------------
 Saya ingin lanjut pemesanan.
     `;
 
     const nomorAdmin = "6288245742094";
     const url = "https://wa.me/" + nomorAdmin + "?text=" + encodeURIComponent(pesan);
+
     window.open(url, "_blank");
 }
 </script>
+
