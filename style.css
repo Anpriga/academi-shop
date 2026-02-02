@@ -123,32 +123,41 @@ body {
 .card-title {
   font-size: 15px;
   font-weight: 700;
-  color: #5a2d00;
+  color: #4e2600; /* cokelat tua, elegan */
   margin-bottom: 8px;
 }
 
 .card-text {
   font-size: 13.5px;
-  line-height: 1.5;
-  color: #6d4c41;
+  line-height: 1.6;
+  color: #6b4a2b; /* cokelat hangat, nggak pucat */
   margin-bottom: 14px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* =====================
    BUTTON CARD
 ===================== */
 .card .btn-primary {
-  background: linear-gradient(135deg, #0003b0, #3f00fb);
+  background: linear-gradient(135deg, #ff9800, #ffb347);
+  color: #4e2600;
   border: none;
-  border-radius: 10px;
-  padding: 8px 18px;
+  border-radius: 12px;
+  padding: 9px 18px;
   font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none; /* HILANGKAN GARIS BAWAH */
   transition: all 0.25s ease;
 }
 
 .card .btn-primary:hover {
-  transform: scale(1.05);
-  opacity: 0.95;
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  color: #3a1c00;
 }
 
 /* =====================
