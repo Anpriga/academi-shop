@@ -1,178 +1,196 @@
-/* WRAPPER GLOBAL */
-.container-custom {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* RESET RINGAN */
+/* =====================
+   RESET & GLOBAL
+===================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
-/* NAVBAR */
+body {
+  background: #fffdf9;
+  color: #333;
+}
+
+/* =====================
+   NAVBAR
+===================== */
 .navbar {
-    background: linear-gradient(90deg, #ffb347, #ffcc80);
-    padding: 16px 24px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(90deg, #ffb347, #ffcc80);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* ISI NAVBAR */
 .navbar .container-fluid {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-
-/* BRAND */
-.navbar-brand {
-    font-weight: 700;
-    font-size: 18px;
-    color: #5a2d00;
-    margin-right: 20px;
-    white-space: nowrap;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 50px;
-}
-.navbar-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
-/* DROPDOWN */
-.dropdown {
-    position: relative;
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 18px;
+  color: #5a2d00;
+  white-space: nowrap;
+}
+
+/* MENU NAV */
+.nav-menu {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .button {
-    background-color: #ff9800;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.25s ease;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .button:hover {
-    background-color: #fb8c00;
-    transform: translateY(-1px);
+  background: #fb8c00;
+  transform: translateY(-2px);
 }
 
-/* DROPDOWN CONTENT */
-.content {
-    display: none;
-    position: absolute;
-    top: 115%;
-    left: 0;
-    background-color: #fff7ed;
-    min-width: 190px;
-    border-radius: 10px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    z-index: 99;
-}
-
-.content a {
-    display: block;
-    padding: 10px 14px;
-    color: #5a2d00;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background 0.2s ease;
-}
-
-.content a:hover {
-    background-color: #ffe0b2;
-}
-
-/* SHOW DROPDOWN */
-.dropdown:hover .content {
-    display: block;
-}
-
-/* ===== CARD SECTION ===== */
-.card {
-    background-color: #fffaf3;
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    display: inline-block; /* card menyesuaikan isi */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
-}
-
-/* IMAGE CARD */
+/* =====================
+   HERO IMAGE
+===================== */
 .card-img-top {
-    display: block;
-    margin: 0 auto;
-    width: 100%;        /* gambar isi lebar card */
-    height: auto;       /* proporsi asli */
-    object-fit: contain;
-    background: none;   /* tidak ada warna samping */
-    padding: 0;         /* hilangkan ruang kosong */
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* BODY CARD */
-.card-body {
-    padding: 18px;
-    text-align: center;      /* isi card rata tengah */
-}
-
-/* TITLE CARD */
-.card-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #5a2d00;
-    margin-bottom: 10px;
-}
-
-/* TEXT CARD */
-.card-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #6d4c41;
-    margin-bottom: 14px;
-}
-
-/* BUTTON CARD */
-.card .btn-primary {
-    background-color: #0003b0;
-    border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 14px;
-    transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.card .btn-primary:hover {
-    background-color: #3f00fb;
-    transform: scale(1.05);
+/* =====================
+   CARD WRAPPER
+===================== */
+.container-fluid.mt-4 {
+  padding: 0;
 }
 
 .card-wrapper {
-    max-width: 1100px;
-    margin: 30px auto 60px;
-    padding: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 36px;
-    row-gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto 70px;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 26px;
+}
+
+/* =====================
+   CARD
+===================== */
+.card {
+  background: #fffaf3;
+  border-radius: 18px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  background: #fff;
+  padding: 12px;
+}
+
+/* =====================
+   CARD BODY
+===================== */
+.card-body {
+  padding: 16px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #5a2d00;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #6d4c41;
+  margin-bottom: 14px;
+}
+
+/* =====================
+   BUTTON CARD
+===================== */
+.card .btn-primary {
+  background: linear-gradient(135deg, #0003b0, #3f00fb);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  transition: all 0.25s ease;
+}
+
+.card .btn-primary:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+/* =====================
+   RESPONSIVE HP
+===================== */
+@media (max-width: 768px) {
+  .navbar .container-fluid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .button {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .card img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 16px;
+  }
+
+  .card-wrapper {
+    gap: 18px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-text {
+    font-size: 13px;
+  }
 }
