@@ -60,6 +60,7 @@ const voucher15 = [
 ];
 
 let diskon = 0;
+let voucherAktif = "";
 
 function cekVoucher() {
     const voucherInput = document.getElementById("voucher").value.toUpperCase();
@@ -67,6 +68,7 @@ function cekVoucher() {
     const inputHarga = document.getElementById("harga");
 
     diskon = 0;
+    voucherAktif = "";
 
     if (voucherInput === "") {
         inputHarga.value = "Rp 100.000";
@@ -74,35 +76,56 @@ function cekVoucher() {
         return;
     }
 
-    if (voucher5.includes(voucherInput)) {
-        diskon = 5;
-        info.innerHTML = "✔️ Voucher valid! Diskon 5%";
-    } else if (voucher10.includes(voucherInput)) {
-        diskon = 10;
-        info.innerHTML = "✔️ Voucher valid! Diskon 10%";
-    } else if (voucher15.includes(voucherInput)) {
-        diskon = 15;
-        info.innerHTML = "✔️ Voucher valid! Diskon 15%";
-    } else {
+    // cek apakah voucher sudah dipakai
+    if (localStorage.getItem("voucher_" + voucherInput)) {
+        info.innerHTML = "❌ Voucher sudah digunakan";
         inputHarga.value = "Rp 100.000";
-        info.innerHTML = "❌ Voucher tidak terdaftar";
         return;
     }
 
+    if (voucher5.includes(voucherInput)) {
+        diskon = 5;
+    } else if (voucher10.includes(voucherInput)) {
+        diskon = 10;
+    } else if (voucher15.includes(voucherInput)) {
+        diskon = 15;
+    } else {
+        info.innerHTML = "❌ Voucher tidak terdaftar";
+        inputHarga.value = "Rp 100.000";
+        return;
+    }
+
+    voucherAktif = voucherInput;
     const hargaAkhir = hargaAwal - (hargaAwal * diskon / 100);
     inputHarga.value = "Rp " + hargaAkhir.toLocaleString("id-ID");
+    info.innerHTML = "✔️ Voucher valid! Diskon " + diskon + "%";
+}
+
+function semuaFormTerisi() {
+    const wajib = ["nama","nirm","prodi","fakultas","kampus"];
+    return wajib.every(id => document.getElementById(id).value.trim() !== "");
 }
 
 function beliSekarang() {
+
+    if (!semuaFormTerisi()) {
+        alert("⚠️ Mohon lengkapi semua data terlebih dahulu.");
+        return;
+    }
+
     const nama = document.getElementById("nama").value;
     const nirm = document.getElementById("nirm").value;
     const prodi = document.getElementById("prodi").value;
     const fakultas = document.getElementById("fakultas").value;
     const kampus = document.getElementById("kampus").value;
     const judul = document.getElementById("judul").value || "-";
-    const voucherInput = document.getElementById("voucher").value.toUpperCase();
 
     const totalBayar = hargaAwal - (hargaAwal * diskon / 100);
+
+    // tandai voucher sudah dipakai
+    if (voucherAktif !== "") {
+        localStorage.setItem("voucher_" + voucherAktif, "used");
+    }
 
     const pesan = `
 *JOKI MAKALAH*
@@ -113,7 +136,7 @@ Program Studi: ${prodi}
 Fakultas: ${fakultas}
 Kampus: ${kampus}
 Judul Makalah: ${judul}
-Voucher: ${voucherInput || "-"}
+Voucher: ${voucherAktif || "-"}
 Diskon: ${diskon}%
 Total Bayar: Rp ${totalBayar.toLocaleString("id-ID")}
 -----------------------
@@ -122,8 +145,6 @@ Saya ingin lanjut pemesanan.
 
     const nomorAdmin = "6288245742094";
     const url = "https://wa.me/" + nomorAdmin + "?text=" + encodeURIComponent(pesan);
-
     window.open(url, "_blank");
 }
 </script>
-
