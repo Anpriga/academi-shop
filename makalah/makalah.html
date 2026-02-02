@@ -38,17 +38,25 @@
     <input type="text" id="voucher" placeholder="Contoh: DISKON20">
     <div class="note">*Masukkan kode voucher jika tersedia</div>
 
-    <button class="btn" onclick="beliSekarang()">Beli Sekarang</button>
+    <button class="btn" id="btnBeli" onclick="beliSekarang()" disabled>
+    Beli Sekarang
+    </button>
 </div>
 <script>
 function beliSekarang() {
-    const nama = document.getElementById("nama").value;
-    const nirm = document.getElementById("nirm").value;
-    const prodi = document.getElementById("prodi").value;
-    const fakultas = document.getElementById("fakultas").value;
-    const kampus = document.getElementById("kampus").value;
-    const judul = document.getElementById("judul").value || "-";
-    const voucherInput = document.getElementById("voucher").value.toUpperCase();
+    const nama = document.getElementById("nama").value.trim();
+    const nirm = document.getElementById("nirm").value.trim();
+    const prodi = document.getElementById("prodi").value.trim();
+    const fakultas = document.getElementById("fakultas").value.trim();
+    const kampus = document.getElementById("kampus").value.trim();
+
+    if (!nama || !nirm || !prodi || !fakultas || !kampus) {
+        alert("Lengkapi semua data wajib terlebih dahulu.");
+        return;
+    }
+
+    // lanjutkan kode yang sudah kamu punya
+}
 
     let hargaAwal = 100000;
     let diskon = 0;
@@ -99,6 +107,24 @@ Saya ingin lanjut pemesanan.
     const url = "https://wa.me/" + nomorAdmin + "?text=" + encodeURIComponent(pesan);
 
     window.open(url, "_blank");
+}
+    const wajib = ["nama", "nirm", "prodi", "fakultas", "kampus"];
+const btnBeli = document.getElementById("btnBeli");
+
+wajib.forEach(id => {
+    document.getElementById(id).addEventListener("input", cekForm);
+});
+
+function cekForm() {
+    let lengkap = true;
+
+    wajib.forEach(id => {
+        if (document.getElementById(id).value.trim() === "") {
+            lengkap = false;
+        }
+    });
+
+    btnBeli.disabled = !lengkap;
 }
 </script>
 
