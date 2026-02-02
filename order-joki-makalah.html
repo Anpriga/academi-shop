@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Joki Makalah</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Panggil CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>📄 Joki Makalah</h2>
+
+    <label>Nama</label>
+    <input type="text" id="nama" required>
+
+    <label>NIRM</label>
+    <input type="text" id="nirm" required>
+
+    <label>Program Studi</label>
+    <input type="text" id="prodi" required>
+
+    <label>Fakultas</label>
+    <input type="text" id="fakultas" required>
+
+    <label>Nama Kampus</label>
+    <input type="text" id="kampus" required>
+
+    <label>Judul Makalah <small>(Opsional)</small></label>
+    <input type="text" id="judul">
+
+    <label>Harga Makalah</label>
+    <input type="text" id="harga" value="Rp 100.000" readonly>
+
+    <label>Kode Voucher <small>(Opsional)</small></label>
+    <input type="text" id="voucher" placeholder="Contoh: DISKON20">
+    <div class="note">*Masukkan kode voucher jika tersedia</div>
+
+    <button class="btn" onclick="beliSekarang()">Beli Sekarang</button>
+</div>
+
+<!-- Panggil JS -->
+<script src="script.js"></script>
+</body>
+</html>
