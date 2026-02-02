@@ -54,15 +54,20 @@ input[readonly] {
 .btn {
     width: 100%;
     padding: 12px;
-    background: #25D366;
-    border: none;
+    background: #25d366;
     color: #fff;
+    border: none;
+    border-radius: 6px;
     font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .btn:hover {
     background: #1ebe5d;
+}
+.btn:disabled {
+    background: #bdbdbd;
+    cursor: not-allowed;
+    opacity: 0.8;
 }
