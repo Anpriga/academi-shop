@@ -5,7 +5,7 @@
     <title>Joki Makalah</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Panggil CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="makalah.css">
 </head>
 <body>
@@ -13,20 +13,20 @@
 <div class="form-container">
     <h2>📄 Joki Makalah</h2>
 
-    <label>Nama</label>
-    <input type="text" id="nama" required>
+    <label>Nama *</label>
+    <input type="text" id="nama">
 
-    <label>NIRM</label>
-    <input type="text" id="nirm" required>
+    <label>NIRM *</label>
+    <input type="text" id="nirm">
 
-    <label>Program Studi</label>
-    <input type="text" id="prodi" required>
+    <label>Program Studi *</label>
+    <input type="text" id="prodi">
 
-    <label>Fakultas</label>
-    <input type="text" id="fakultas" required>
+    <label>Fakultas *</label>
+    <input type="text" id="fakultas">
 
-    <label>Nama Kampus</label>
-    <input type="text" id="kampus" required>
+    <label>Nama Kampus *</label>
+    <input type="text" id="kampus">
 
     <label>Judul Makalah <small>(Opsional)</small></label>
     <input type="text" id="judul">
@@ -35,38 +35,34 @@
     <input type="text" id="harga" value="Rp 100.000" readonly>
 
     <label>Kode Voucher <small>(Opsional)</small></label>
-    <input type="text" id="voucher" placeholder="Contoh: DISKON20">
+    <input type="text" id="voucher" placeholder="Contoh: HEMAT10A">
     <div class="note">*Masukkan kode voucher jika tersedia</div>
 
     <button class="btn" onclick="beliSekarang()">Beli Sekarang</button>
 </div>
+
 <script>
 function beliSekarang() {
-    const nama = document.getElementById("nama").value;
-    const nirm = document.getElementById("nirm").value;
-    const prodi = document.getElementById("prodi").value;
-    const fakultas = document.getElementById("fakultas").value;
-    const kampus = document.getElementById("kampus").value;
-    const judul = document.getElementById("judul").value || "-";
-    const voucherInput = document.getElementById("voucher").value.toUpperCase();
+    const nama = document.getElementById("nama").value.trim();
+    const nirm = document.getElementById("nirm").value.trim();
+    const prodi = document.getElementById("prodi").value.trim();
+    const fakultas = document.getElementById("fakultas").value.trim();
+    const kampus = document.getElementById("kampus").value.trim();
+    const judul = document.getElementById("judul").value.trim() || "-";
+    const voucherInput = document.getElementById("voucher").value.trim().toUpperCase();
+
+    // VALIDASI FORM WAJIB
+    if (!nama || !nirm || !prodi || !fakultas || !kampus) {
+        alert("⚠️ Mohon lengkapi semua data wajib terlebih dahulu.");
+        return;
+    }
 
     let hargaAwal = 100000;
     let diskon = 0;
 
-    const voucher5 = [
-        "HEMAT5A","HEMAT5B","HEMAT5C","HEMAT5D","HEMAT5E",
-        "HEMAT5F","HEMAT5G","HEMAT5H","HEMAT5I","HEMAT5J"
-    ];
-
-    const voucher10 = [
-        "HEMAT10A","HEMAT10B","HEMAT10C","HEMAT10D","HEMAT10E",
-        "HEMAT10F","HEMAT10G","HEMAT10H","HEMAT10I","HEMAT10J"
-    ];
-
-    const voucher15 = [
-        "HEMAT15A","HEMAT15B","HEMAT15C","HEMAT15D","HEMAT15E",
-        "HEMAT15F","HEMAT15G","HEMAT15H","HEMAT15I","HEMAT15J"
-    ];
+    const voucher5 = ["HEMAT5A","HEMAT5B","HEMAT5C","HEMAT5D","HEMAT5E","HEMAT5F","HEMAT5G","HEMAT5H","HEMAT5I","HEMAT5J"];
+    const voucher10 = ["HEMAT10A","HEMAT10B","HEMAT10C","HEMAT10D","HEMAT10E","HEMAT10F","HEMAT10G","HEMAT10H","HEMAT10I","HEMAT10J"];
+    const voucher15 = ["HEMAT15A","HEMAT15B","HEMAT15C","HEMAT15D","HEMAT15E","HEMAT15F","HEMAT15G","HEMAT15H","HEMAT15I","HEMAT15J"];
 
     if (voucher5.includes(voucherInput)) {
         diskon = 5;
@@ -97,7 +93,9 @@ Saya ingin lanjut pemesanan.
 
     const nomorAdmin = "6288245742094";
     const url = "https://wa.me/" + nomorAdmin + "?text=" + encodeURIComponent(pesan);
-
     window.open(url, "_blank");
 }
 </script>
+
+</body>
+</html>
